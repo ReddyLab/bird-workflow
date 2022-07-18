@@ -1,6 +1,0 @@
-[submodule "python"]
-	path = python
-	url = https://github.com/bmajoros/python.git
-[submodule "BOOM"]
-	path = BOOM
-	url = https://github.com/bmajoros/BOOM.git

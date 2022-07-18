@@ -12,5 +12,4 @@ RUN make build
 COPY BIRD.stan .
 RUN make BIRD
 
-COPY run_BIRD.sh run_BIRD.sh
-CMD run_BIRD.sh 
+ENTRYPOINT ["bird.py", "BIRD-1.1"]  

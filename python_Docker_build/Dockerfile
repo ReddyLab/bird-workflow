@@ -1,8 +1,9 @@
 FROM python:3.9
 
-ADD bird.py /
+RUN wget --no-check-certificate https://github.com/bmajoros/BIRD/blob/master/bird.py
 
-RUN pip3 install pandas
+ENV PYTHONPATH "${PYTHONPATH}:/opt/anaconda3/bin/python3"
 
-CMD [ "python", "./bird.py" ]
-  
+RUN pip3 install --trusted-host pypi.org pandas
+
+ENTRYPOINT ["python", "bird.py"]  
