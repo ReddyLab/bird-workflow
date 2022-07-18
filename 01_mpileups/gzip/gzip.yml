@@ -1,0 +1,4 @@
+file:
+  class: File
+  path: "sample_text_file.txt"
+name: "asdf"
