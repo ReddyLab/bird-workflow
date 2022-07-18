@@ -9,7 +9,7 @@ inputs:
   name: string
 
 outputs:
-  example_out:
+  compressed_filtered_pileup:
     type: File
     outputSource: gzip/compressed_filtered_pileup
 
