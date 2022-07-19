@@ -1,8 +1,14 @@
 cwlVersion: v1.2
 class: CommandLineTool
+
+hints:
+    DockerRequirement:
+      dockerPull: dukegcb/samtools:1.3
+
+stdout: pileup.txt
+
 baseCommand: samtools
 arguments: ['mpileup']
-stdout: pileup.txt
 inputs:
   depth:
     type: int
