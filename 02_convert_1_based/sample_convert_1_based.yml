@@ -1,0 +1,4 @@
+replicate_name: "test"
+compressed_filtered_pileup:
+  class: File
+  path: "test_mpileup.txt.gz"
