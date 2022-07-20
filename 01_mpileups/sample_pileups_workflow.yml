@@ -11,4 +11,4 @@ alignments:
 sample_pileup:
   class: File
   path: "filter_unknown_ref_base/sample_pileup.txt"
-name: "test"
+replicate_name: "test"

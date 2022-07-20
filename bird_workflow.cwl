@@ -6,7 +6,7 @@ requirements:
   SubworkflowFeatureRequirement: {}
 
 inputs:
-  names: string[]
+  replicate_names: string[]
   alignment_sets: File[]
   mpileup_depth: int
   genome_file: File
@@ -15,19 +15,19 @@ inputs:
 outputs:
   pileup_out:
     type: File[]
-    outputSource: mpileups/compressed_filtered_pileup
+    outputSource: mpileups/filtered_pileup_file
 
 steps:
   mpileups:
     run: 01_mpileups/pileups_workflow.cwl
     scatter:
-      - name
+      - replicate_name
       - alignments
     scatterMethod: dotproduct
     in:
-      name: names
+      replicate_name: replicate_names
       mpileup_depth: mpileup_depth
       genome_file: genome_file
       locations: locations
       alignments: alignment_sets
-    out: [compressed_filtered_pileup]
+    out: [filtered_pileup_file]

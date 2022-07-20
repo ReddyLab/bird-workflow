@@ -6,12 +6,12 @@ inputs:
   genome_file: File
   locations: File
   alignments: File
-  name: string
+  replicate_name: string
 
 outputs:
-  compressed_filtered_pileup:
+  filtered_pileup_file:
     type: File
-    outputSource: gzip/compressed_filtered_pileup
+    outputSource: filter_unknown_ref_base/filtered_pileup_file
 
 steps:
   samtools:
@@ -26,10 +26,5 @@ steps:
     run: filter_unknown_ref_base/filter_unknown_ref_base.cwl
     in:
       text: samtools/pileups
+      replicate_name: replicate_name
     out: [filtered_pileup_file]
-  gzip:
-    run: gzip/gzip.cwl
-    in:
-      file: filter_unknown_ref_base/filtered_pileup_file
-      name: name
-    out: [compressed_filtered_pileup]
