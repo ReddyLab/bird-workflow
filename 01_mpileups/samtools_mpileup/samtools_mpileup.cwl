@@ -22,6 +22,8 @@ inputs:
       prefix: -d
   genome_file:
     type: File
+    secondaryFiles:
+      - .fai
     inputBinding:
       position: 3
       prefix: -f

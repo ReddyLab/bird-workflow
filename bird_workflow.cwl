@@ -9,7 +9,10 @@ inputs:
   replicate_names: string[]
   alignment_sets: File[]
   mpileup_depth: int
-  genome_file: File
+  genome_file:
+    type: File
+    secondaryFiles:
+      - .fai
   locations: File
 
 outputs:

@@ -3,7 +3,10 @@ class: Workflow
 
 inputs:
   mpileup_depth: int
-  genome_file: File
+  genome_file:
+    type: File
+    secondaryFiles:
+      - .fai
   locations: File
   alignments: File
   replicate_name: string
