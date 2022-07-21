@@ -1,0 +1,4 @@
+text:
+  class: File
+  path: "sample_pileup.txt"
+replicate_name: "test"

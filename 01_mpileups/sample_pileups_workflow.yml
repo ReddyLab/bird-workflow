@@ -1,0 +1,14 @@
+mpileup_depth: 0
+genome_file:
+  class: File
+  path: "/data/reddylab/Reference_Data/Genomes/hg38/hg38.fa"
+locations:
+  class: File
+  path: "samtools_mpileup/sample_positions.txt"
+alignments:
+  class: File
+  path: "/data/reddylab/gjohnson/scz/ORI_library_files_and_data/alignment_and_processing/alignments/Input1/Input1_lengthFiltered.bam"
+sample_pileup:
+  class: File
+  path: "filter_unknown_ref_base/sample_pileup.txt"
+replicate_name: "test"
