@@ -5,11 +5,6 @@ hints:
   DockerRequirement:
     dockerPull: dukegcb/samtools:1.3
 
-requirements:
-  InitialWorkDirRequirement:
-    listing:
-      - $(inputs.genome_file)
-
 stdout: pileup.txt
 
 baseCommand: samtools
