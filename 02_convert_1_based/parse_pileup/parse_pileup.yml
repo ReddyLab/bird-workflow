@@ -1,3 +1,0 @@
-filtered_pileup:
-  class: File
-  path: "test_mpileup.txt"

@@ -18,7 +18,7 @@ inputs:
 outputs:
   pileup_out:
     type: File[]
-    outputSource: mpileups/filtered_pileup_file
+    outputSource: mpileups/parsed_pileup_file
 
 steps:
   mpileups:
@@ -33,4 +33,4 @@ steps:
       genome_file: genome_file
       locations: locations
       alignments: alignment_sets
-    out: [filtered_pileup_file]
+    out: [parsed_pileup_file]

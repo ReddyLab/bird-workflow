@@ -1,6 +1,10 @@
 cwlVersion: v1.2
 class: CommandLineTool
 
+hints:
+  DockerRequirement:
+    dockerPull: python:3.9
+
 requirements:
   InitialWorkDirRequirement:
       listing:
