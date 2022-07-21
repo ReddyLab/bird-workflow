@@ -12,9 +12,9 @@ inputs:
   replicate_name: string
 
 outputs:
-  filtered_pileup_file:
+  parsed_pileup_file:
     type: File
-    outputSource: filter_unknown_ref_base/filtered_pileup_file
+    outputSource: parse_pileup/parsed_filtered_pileup
 
 steps:
   samtools:
@@ -31,3 +31,9 @@ steps:
       text: samtools/pileups
       replicate_name: replicate_name
     out: [filtered_pileup_file]
+  parse_pileup:
+    run: parse_pileup/parse_pileup.cwl
+    in:
+      filtered_pileup: filter_unknown_ref_base/filtered_pileup_file
+      replicate_name: replicate_name
+    out: [parsed_filtered_pileup]
