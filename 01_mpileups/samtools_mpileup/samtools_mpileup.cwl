@@ -2,8 +2,13 @@ cwlVersion: v1.2
 class: CommandLineTool
 
 hints:
-    DockerRequirement:
-      dockerPull: dukegcb/samtools:1.3
+  DockerRequirement:
+    dockerPull: dukegcb/samtools:1.3
+
+requirements:
+  InitialWorkDirRequirement:
+    listing:
+      - $(inputs.genome_file)
 
 stdout: pileup.txt
 
