@@ -1,0 +1,3 @@
+merged_counts:
+  class: File
+  path: "sample_merged_counts.txt"
