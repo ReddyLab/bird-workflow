@@ -1,0 +1,8 @@
+input_replicates:
+  - class: File
+    path: "Input1_counts_for_bird.txt"
+  - class: File
+    path: "Input2_counts_for_bird.txt"
+output_replicates:
+  - class: File
+    path: "Output1_counts_for_bird.txt"
