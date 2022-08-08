@@ -1,0 +1,4 @@
+replicate_name: "test"
+parsed_pileup:
+  class: File
+  path: "test_parsed_mpileups.txt"
