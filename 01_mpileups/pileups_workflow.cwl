@@ -12,9 +12,9 @@ inputs:
   replicate_name: string
 
 outputs:
-  parsed_pileup_file:
+  ref_count_file:
     type: File
-    outputSource: parse_pileup/parsed_filtered_pileup
+    outputSource: ref_counts/ref_count_file
 
 steps:
   samtools:
@@ -37,3 +37,9 @@ steps:
       filtered_pileup: filter_unknown_ref_base/filtered_pileup_file
       replicate_name: replicate_name
     out: [parsed_filtered_pileup]
+  ref_counts:
+    run: ref_counts/ref_counts.cwl
+    in:
+      parsed_pileup: parse_pileup/parsed_filtered_pileup
+      replicate_name: replicate_name
+    out: [ref_count_file]
