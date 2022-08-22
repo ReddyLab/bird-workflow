@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.9 as BIRD
 
 WORKDIR /
 
@@ -9,10 +9,18 @@ RUN mv cmdstan-2.30.0 cmdstan
 WORKDIR /cmdstan
 RUN make build
 
-RUN wget --no-check-certificate https://github.com/bmajoros/BIRD/blob/master/bird.py
-
 COPY BIRD.stan .
 RUN make BIRD
-RUN mv BIRD BIRD-1.1
 
-ENTRYPOINT ["bird.py", "BIRD-1.1"]  
+FROM python:3.9
+
+WORKDIR /
+RUN git clone https://github.com/tncowart/python
+ENV PYTHONPATH "${PYTHONPATH}:/python"
+
+WORKDIR /bird
+RUN pip3 install pandas
+COPY --from=BIRD /cmdstan/BIRD .
+RUN wget https://github.com/bmajoros/BIRD/blob/master/bird.py
+
+ENTRYPOINT ["python", "bird.py", "BIRD"]  
