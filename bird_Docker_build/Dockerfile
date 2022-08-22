@@ -12,9 +12,10 @@ RUN make build
 COPY BIRD.stan .
 RUN make BIRD
 
+WORKDIR /
+
 FROM python:3.9
 
-WORKDIR /
 RUN git clone https://github.com/tncowart/python
 ENV PYTHONPATH "${PYTHONPATH}:/python"
 
