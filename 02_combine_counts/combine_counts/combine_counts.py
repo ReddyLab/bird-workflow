@@ -13,8 +13,8 @@ def merge_counts(count_files):
             sep="\t",
             index_col=0,
             names=[
-                base_name.replace("counts_for_bird.txt", "ref"),
-                base_name.replace("counts_for_bird.txt", "alt"),
+                base_name.replace("_counts.txt", ""),
+                base_name.replace("ref_counts.txt", "alt"),
             ],
         )
         for file_name, base_name in zip(count_files, base_names)

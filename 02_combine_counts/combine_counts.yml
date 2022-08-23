@@ -1,7 +1,7 @@
 replicates:
   - class: File
-    path: "Input1_counts_for_bird.txt"
+    path: "Input1_ref_counts.txt"
   - class: File
-    path: "Input2_counts_for_bird.txt"
+    path: "Input2_ref_counts.txt"
   - class: File
-    path: "Output1_counts_for_bird.txt"
+    path: "Output1_ref_counts.txt"
