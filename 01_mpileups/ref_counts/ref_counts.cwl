@@ -3,7 +3,7 @@ class: CommandLineTool
 
 hints:
   DockerRequirement:
-    dockerPull: python:3.9 # needs to be updated to use custom python docker images
+    dockerPull: ghcr.io/reddylab/bird-workflow-python:main
 
 requirements:
   InitialWorkDirRequirement:
