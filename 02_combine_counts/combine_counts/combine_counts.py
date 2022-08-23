@@ -46,7 +46,7 @@ def run(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Merge counts for BIRD processing")
     parser.add_argument("--inputs", "-i", nargs="+", help="Input replicate file names")
-    parser.add_argument("--outputs", "-o", nargs="+", help="Input replicate file names")
+    parser.add_argument("--outputs", "-o", nargs="+", help="Output replicate file names")
 
     args = parser.parse_args()
     run(args)

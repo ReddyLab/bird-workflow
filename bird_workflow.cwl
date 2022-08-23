@@ -16,9 +16,9 @@ inputs:
   locations: File
 
 outputs:
-  pileup_out:
-    type: File[]
-    outputSource: mpileups/ref_count_file
+  replicate_counts:
+    type: File
+    outputSource: combineCounts/merged_counts
 
 steps:
   mpileups:
@@ -34,3 +34,8 @@ steps:
       locations: locations
       alignments: alignment_sets
     out: [ref_count_file]
+  combineCounts:
+    run: 02_combine_counts/combine_counts.cwl
+    in:
+      replicates: mpileups/ref_count_file
+    out: [merged_counts]
