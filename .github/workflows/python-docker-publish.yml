@@ -6,8 +6,6 @@ name: BIRD Workflow Python Docker Image
 # documentation.
 
 on:
-  push:
-    branches: [ "main" ]
   workflow_dispatch:
 
 env:
