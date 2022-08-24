@@ -1,30 +1,23 @@
 cwlVersion: v1.2
-class: CommandLineTool
+class: ExpressionTool
 
 doc: |
   Groups replicate into input and output replicates
 
-hints:
-  DockerRequirement:
-    dockerPull: alpine:3.16.1
-
 requirements:
-  InitialWorkDirRequirement:
-    listing:
-      - $(inputs.replicates)
+  InlineJavascriptRequirement: {}
 
-baseCommand: ls  # Basically, do nothing
 inputs:
   replicates:
     type: File[]
-    inputBinding:
-      position: 1
 outputs:
   input_replicates:
     type: File[]
-    outputBinding:
-      glob: "Input*.txt"
   output_replicates:
     type: File[]
-    outputBinding:
-      glob: "Output*.txt"
+
+expression: |
+  ${ return {
+    "input_replicates": inputs.replicates.filter(function(x) { return x.basename.startsWith("Input")}),
+    "output_replicates": inputs.replicates.filter(function(x) { return x.basename.startsWith("Output")})
+  }}
