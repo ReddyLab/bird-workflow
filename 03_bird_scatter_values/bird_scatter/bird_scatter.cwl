@@ -1,6 +1,9 @@
 cwlVersion: v1.2
 class: CommandLineTool
 
+doc: |
+  Compute the parameters needed to split the BIRD work up
+
 hints:
   DockerRequirement:
     dockerPull: python:3.9

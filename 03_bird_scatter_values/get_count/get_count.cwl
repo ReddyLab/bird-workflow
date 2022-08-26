@@ -1,6 +1,9 @@
 cwlVersion: v1.2
 class: CommandLineTool
 
+doc: |
+  Get the number of variants to run BIRD on
+
 hints:
   DockerRequirement:
     dockerPull: alpine:3.16.1
@@ -10,7 +13,7 @@ requirements:
     listing:
       - entryname: count.sh
         entry: |-
-          COUNT=`tail -n +2 $1 | wc -l | awk '{print $1}'`
+          COUNT=`grep -chv -e '^$' $1`  # count the number of non-blank lines
           echo "{\"bird_counts\":$COUNT}" > cwl.output.json
 
 baseCommand: "sh"

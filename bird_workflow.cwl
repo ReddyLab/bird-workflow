@@ -16,9 +16,18 @@ inputs:
   locations: File
 
 outputs:
-  replicate_counts:
-    type: File
-    outputSource: combineCounts/merged_counts
+  names:
+    type: string[]
+    outputSource: birdScatterValues/names
+  indexes:
+    type: int[]
+    outputSource: birdScatterValues/indexes
+  starts:
+    type: int[]
+    outputSource: birdScatterValues/starts
+  ends:
+    type: int[]
+    outputSource: birdScatterValues/ends
 
 steps:
   mpileups:
@@ -39,3 +48,9 @@ steps:
     in:
       replicates: mpileups/ref_count_file
     out: [merged_counts]
+  birdScatterValues:
+    run: 03_bird_scatter_values/bird_scatter_values.cwl
+    in:
+      merged_counts: combineCounts/merged_counts
+    out:
+      [names, indexes, starts, ends]
