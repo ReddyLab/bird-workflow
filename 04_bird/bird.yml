@@ -1,0 +1,11 @@
+name: sczps_no_peaks
+number: 0
+start: 0
+end: 23
+min_effect: 1.25
+input_file:
+  class: File
+  path: "merged_counts_for_bird_no_header.txt"
+output_file: "Adf"
+mcmc_sample_count: 10
+range: "asdf"
