@@ -15,3 +15,8 @@ genome_file:
 locations:
   class: File
   path: "01_mpileups/samtools_mpileup/sample_positions.txt"
+bird_output_prefix: sczps_no_peaks
+min_effect: 1.25
+bird_output_file: "ignore this value"
+mcmc_sample_count: 10
+bird_range: "ignore this value"
