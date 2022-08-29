@@ -1,9 +1,13 @@
 replicate_names:
   - Input1
+  - Input2
   - Output1
+  - Output2
 alignment_sets:
   - { class: File, path: "/data/reddylab/gjohnson/scz/ORI_library_files_and_data/alignment_and_processing/alignments/Input1/Input1_lengthFiltered.bam" }
+  - { class: File, path: "/data/reddylab/gjohnson/scz/ORI_library_files_and_data/alignment_and_processing/alignments/Input2/Input2_lengthFiltered.bam" }
   - { class: File, path: "/data/reddylab/gjohnson/scz/ORI_library_files_and_data/alignment_and_processing/alignments/Output1/Output1.bam" }
+  - { class: File, path: "/data/reddylab/gjohnson/scz/ORI_library_files_and_data/alignment_and_processing/alignments/Output2/Output2.bam" }
 mpileup_depth: 0
 genome_file:
   class: File
