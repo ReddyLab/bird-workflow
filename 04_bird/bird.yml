@@ -6,6 +6,6 @@ min_effect: 1.25
 input_file:
   class: File
   path: "merged_counts_for_bird_no_header.txt"
-output_file: "Adf"
+output_file: "ignore this value"
 mcmc_sample_count: 10
-range: "asdf"
+range: "ignore this value"
