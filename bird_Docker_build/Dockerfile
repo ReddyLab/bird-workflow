@@ -21,6 +21,6 @@ ENV PYTHONPATH "${PYTHONPATH}:/python"
 WORKDIR /bird
 RUN pip3 install pandas
 COPY --from=BIRD /cmdstan/BIRD .
-RUN wget https://raw.githubusercontent.com/bmajoros/BIRD/master/bird.py
+COPY bird.py .
 
 ENTRYPOINT ["python", "bird.py", "BIRD"]
