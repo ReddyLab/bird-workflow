@@ -14,6 +14,10 @@ RUN make BIRD
 
 FROM python:3.9
 
+# Install required system dependencies
+RUN apt-get update && apt-get upgrade -y && apt-get install --no-install-recommends -y \
+   libtbb2
+
 WORKDIR /
 RUN git clone https://github.com/tncowart/python
 ENV PYTHONPATH "${PYTHONPATH}:/python"
