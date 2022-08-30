@@ -14,20 +14,19 @@ inputs:
     secondaryFiles:
       - .fai
   locations: File
+  bird_output_prefix: string
+  min_effect: float
+  bird_output_file: string
+  mcmc_sample_count: int
+  bird_range: string
 
 outputs:
-  names:
-    type: string[]
-    outputSource: birdScatterValues/names
-  indexes:
-    type: int[]
-    outputSource: birdScatterValues/indexes
-  starts:
-    type: int[]
-    outputSource: birdScatterValues/starts
-  ends:
-    type: int[]
-    outputSource: birdScatterValues/ends
+  logged_output:
+    type: File[]
+    outputSource: bird/logged_output
+  bird_output:
+    type: File[]
+    outputSource: bird/bird_output
 
 steps:
   mpileups:
@@ -54,3 +53,23 @@ steps:
       merged_counts: combineCounts/merged_counts
     out:
       [names, indexes, starts, ends]
+  bird:
+    run: 04_bird/bird.cwl
+    scatter:
+      - number
+      - start
+      - end
+    scatterMethod: dotproduct
+    in:
+      name: bird_output_prefix
+      number: birdScatterValues/indexes
+      start: birdScatterValues/starts
+      end: birdScatterValues/ends
+      min_effect: min_effect
+      input_file: combineCounts/merged_counts
+      output_file: bird_output_file
+      mcmc_sample_count: mcmc_sample_count
+      range: bird_range
+    out:
+      [logged_output, bird_output]
+
