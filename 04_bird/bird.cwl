@@ -55,7 +55,7 @@ inputs:
 outputs:
   logged_output:
     type: stdout
-  stan_output:
+  bird_output:
     type: File
     outputBinding:
       glob: $(inputs.name + "_stan_" + inputs.number.toString().padStart(4, "0") + ".txt")
