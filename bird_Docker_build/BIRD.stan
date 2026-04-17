@@ -6,17 +6,17 @@ functions {
 }
 
 data {
-   int<lower=0> N_DNA;      // number of DNA replicates
-   int<lower=0> a[N_DNA];   // DNA alt read counts
-   int<lower=0> b[N_DNA];   // DNA ref read counts
-   int<lower=0> N_RNA;      // number of RNA replicates
-   int<lower=0> k[N_RNA];   // RNA alt read counts
-   int<lower=0> m[N_RNA];   // RNA ref read counts
+   int<lower=0> N_DNA;               // number of DNA replicates
+   array[N_DNA] int<lower=0> a;      // DNA alt read counts
+   array[N_DNA] int<lower=0> b;      // DNA ref read counts
+   int<lower=0> N_RNA;               // number of RNA replicates
+   array[N_RNA] int<lower=0> k;      // RNA alt read counts
+   array[N_RNA] int<lower=0> m;      // RNA ref read counts
 }
 
 parameters {
    real<lower=0,upper=1> p; // alt allele freq in DNA library
-   real<lower=0,upper=1> qi[N_RNA]; // alt allele freqs in RNA reps
+   array[N_RNA] real<lower=0,upper=1> qi; // alt allele freqs in RNA reps
    real<lower=0> theta; // effect size (odds ratio)
    real<lower=2> c; // concentration parameter of beta prior for qi
    real<lower=0> s; // variance parameter of lognormal prior for theta
