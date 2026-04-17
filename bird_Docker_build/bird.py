@@ -121,8 +121,6 @@ def getCredibleInterval(thetas, alpha):
 
 def runVariant(model, fields, numSamples, outfile):
     # Write inputs file for STAN
-    if len(fields) < 10:  # Not enough power?
-        return None  # return (None, None) ???
     writeInputsFile(fields, INPUT_FILE)
     writeInitializationFile(fields, INIT_FILE)
 
