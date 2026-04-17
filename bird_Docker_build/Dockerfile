@@ -14,12 +14,6 @@ RUN make BIRD
 
 FROM python:3.9
 
-# Install required system dependencies
-RUN apt-get update && apt-get upgrade -y && apt-get install --no-install-recommends -y \
-   libtbb12 \
-   && rm -rf /var/lib/apt/lists/* \
-   && ln -s /usr/lib/x86_64-linux-gnu/libtbb.so.12 /usr/lib/x86_64-linux-gnu/libtbb.so.2
-
 WORKDIR /
 RUN git clone https://github.com/tncowart/python
 ENV PYTHONPATH="/python"
@@ -27,6 +21,8 @@ ENV PYTHONPATH="/python"
 WORKDIR /bird
 RUN pip3 install pandas
 COPY --from=bird-build /cmdstan/BIRD .
+COPY --from=bird-build /cmdstan/stan/lib/stan_math/lib/tbb/libtbb.so.2 /usr/lib/x86_64-linux-gnu/
+RUN ldconfig
 COPY bird.py .
 
 ENTRYPOINT ["python", "bird.py", "BIRD"]
