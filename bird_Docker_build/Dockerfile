@@ -1,4 +1,4 @@
-FROM python:3.9 as BIRD
+FROM python:3.9 AS bird-build
 
 WORKDIR /
 
@@ -16,15 +16,16 @@ FROM python:3.9
 
 # Install required system dependencies
 RUN apt-get update && apt-get upgrade -y && apt-get install --no-install-recommends -y \
-   libtbb2
+   libtbb12 \
+   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /
 RUN git clone https://github.com/tncowart/python
-ENV PYTHONPATH "${PYTHONPATH}:/python"
+ENV PYTHONPATH="/python"
 
 WORKDIR /bird
 RUN pip3 install pandas
-COPY --from=BIRD /cmdstan/BIRD .
+COPY --from=bird-build /cmdstan/BIRD .
 COPY bird.py .
 
 ENTRYPOINT ["python", "bird.py", "BIRD"]
